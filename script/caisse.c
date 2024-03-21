@@ -18,12 +18,31 @@ int main() {
 	double Montant = RandDouble();
 	double Billets[] = {2000.0, 1000.0, 500.0, 200.0, 100.0, 50.0, 25.0, 20.0, 10.0, 5.0, 1.0, 0.5, 0.2, 0.05};
 	int Stock[14];
-	for (int i = 0; i < 14; i++) Stock[i] = 40;
+	int SommeStock;
+	int Choix;
 	
+	for (int i = 0; i < 14; i++) {
+		Stock[i] = 40;
+		SommeStock += Stock[i] * Billets[i];
+	}
 	
 	printf("Le montant a payé est %.2lf.\n", Montant);
 	printf("Veuillez indiquez le montant que vous allez donner : ");
 	scanf("%lf", &Paye);
+	
+	if (SommeStock < Paye) {
+		printf("Désolé, vous ne pouvez pas faire cette transaction.\n");
+		printf("Que voulez-vous faire maintenant?\nEntrez 0 pour fermer la caisse et 1 pour remplir la caisse : ");
+		scanf("%i", &Choix);
+		if (Choix == 1) {
+			SommeStock = 0;
+			for (int i = 0; i < 14; i++) {
+				Stock[i] = 40;
+				SommeStock += Stock[i] * Billets[i];
+			}
+		}
+		else { return 1 ; }
+	}
 	
 	while (Paye < Montant) {
 		printf("Veuillez donner un montant supérieur ou égal : ");
