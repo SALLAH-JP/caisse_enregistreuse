@@ -4,9 +4,7 @@
 
 double RandDouble() {
 	srand(time(NULL));
-	double r = rand() % 10001 + ((double) rand() / RAND_MAX);
-	r = (r * 100) / 100;
-	
+	double r = rand() % 10001 + ((double) rand() / RAND_MAX);	
 
 	return r;
 }
