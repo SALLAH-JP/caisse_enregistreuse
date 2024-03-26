@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
+
 
 double RandDouble() {
 	srand(time(NULL));
-	double r = rand() % 10001 + ((double) rand() / RAND_MAX);	
+	double r = rand() % 10001 + ((double) rand() / RAND_MAX);
+	r = round(r * 100) / 100;
 
 	return r;
 }
